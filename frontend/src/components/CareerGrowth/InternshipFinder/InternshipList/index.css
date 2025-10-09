@@ -1,0 +1,268 @@
+/* Internship List Wrapper */
+.internship-list {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.internship-list h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #4b0082;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Filters Section */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.filters input,
+.filters select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  min-width: 150px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #4b0082;
+  box-shadow: 0 0 6px rgba(75, 0, 130, 0.3);
+}
+
+/* Job Card Grid */
+.internship-list ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove link underline & default styling */
+.internship-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Internship Card */
+.internship-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.internship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.internship-card h3 {
+  font-size: 1.2rem;
+  color: #4b0082;
+  margin-bottom: 8px;
+}
+
+.internship-card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Save Button */
+.save-btn,
+.saved {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: #4b0082;
+  color: #fff;
+}
+
+.save-btn:hover {
+  background: #36005c;
+}
+
+.saved {
+  background: #ffc107;
+  color: #222;
+}
+
+.saved:hover {
+  background: #e0a800;
+}
+
+/* Deadline Text */
+.deadline {
+  color: #d9534f;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Card action buttons */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.apply-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+  background: #1e7e34;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal */
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+  text-align: center;
+  color: #4b0082;
+  margin-bottom: 15px;
+}
+
+/* Apply Form */
+.apply-form input,
+.apply-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.apply-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.apply-form input[type="file"] {
+  padding: 5px;
+}
+
+.error-msg {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Form Buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #5a6268;
+}
+
+.submit-btn {
+  background: #4b0082;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  background: #36005c;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters input,
+  .filters select {
+    width: 90%;
+  }
+
+  .modal {
+    width: 95%;
+  }
+}
+
+/* Smooth modal animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

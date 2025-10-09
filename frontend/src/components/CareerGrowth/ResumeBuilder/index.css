@@ -1,0 +1,240 @@
+/* src/components/CareerGrowth/ResumeBuilder/index.css */
+
+/* General Container */
+.resume-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.resume-container.dark {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+}
+
+/* Header */
+.header-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.resume-title {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.resume-subtitle {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Template Selector */
+.template-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.template-btn {
+  padding: 5px 12px;
+  margin: 2px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.2s;
+}
+
+.template-btn.active,
+.template-btn:hover {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+/* Navigation Cards */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.nav-card {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 15px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  background-color: #f9f9f9;
+  transition: all 0.2s;
+}
+
+.nav-card:hover {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+/* Extra Tools */
+.extra-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.extra-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tool-card {
+  flex: 1 1 250px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #fafafa;
+  transition: all 0.2s;
+}
+
+.tool-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tool-card h4 {
+  margin-bottom: 6px;
+}
+
+.icon-lg {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+/* ATS Tip & Bullet Tip */
+.ats-tip,
+.bullet-tip {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #2e7d32;
+}
+
+/* Footer Controls */
+.footer-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toggle-btn,
+.home-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover,
+.home-btn:hover {
+  background-color: #45a049;
+}
+
+/* Resume Templates */
+.resume-container.modern {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.resume-container.classic {
+  font-family: 'Georgia', serif;
+  background-color: #fff8f0;
+  color: #333;
+}
+
+.resume-container.creative {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #f0faff;
+  color: #222;
+}
+
+/* Collapsible Sections */
+.collapsible {
+  cursor: pointer;
+  user-select: none;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.collapsible-content {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+/* Skills Tags */
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Buttons inside tool cards */
+.tool-card button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.tool-card button:hover {
+  background-color: #1565c0;
+}
+
+/* Textarea in tool cards */
+.tool-card textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  resize: vertical;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links, .extra-tools {
+    flex-direction: column;
+  }
+
+  .footer-controls {
+    flex-direction: column;
+  }
+}

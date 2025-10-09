@@ -1,0 +1,166 @@
+/* =========================
+   Resume Form Container
+   ========================= */
+.resume-container {
+  padding: 2rem;
+  background: #f4f0fb; /* light purple background */
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =========================
+   Resume Card
+   ========================= */
+.resume-container .resume-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.resume-container .resume-card:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   Titles & Headings
+   ========================= */
+.resume-container .resume-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  color: #4b0082; /* deep purple title */
+}
+
+.resume-container .resume-form h3 {
+  margin-top: 1.5rem;
+  color: #6a0dad; /* purple headings */
+  font-size: 1.2rem;
+}
+
+/* =========================
+   Input Fields
+   ========================= */
+.resume-container .input-group input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+  background: #f9f6ff; /* subtle light purple background */
+}
+
+.resume-container .input-group input:focus {
+  border-color: #800080; /* purple focus */
+  outline: none;
+  background: #f4f0fb;
+}
+
+/* =========================
+   Skills Textarea
+   (Scoped ONLY to Resume Form)
+   ========================= */
+.resume-container .skills-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px; /* Increased height ONLY here */
+  background: #f9f6ff; /* subtle light purple */
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.resume-container .skills-textarea:focus {
+  border-color: #800080;
+  outline: none;
+  background: #f4f0fb;
+}
+
+/* =========================
+   Dynamic Sections (Education, Experience, etc.)
+   ========================= */
+.resume-container .dynamic-section {
+  margin-top: 1rem;
+}
+
+.resume-container .dynamic-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resume-container .dynamic-field textarea {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  min-height: 70px; /* Comfortable size */
+  background: #f9f6ff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.resume-container .dynamic-field textarea:focus {
+  border-color: #800080;
+  outline: none;
+  background: #f4f0fb;
+}
+
+/* =========================
+   Add / Remove Buttons
+   ========================= */
+.resume-container .add-btn,
+.resume-container .remove-btn {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.resume-container .add-btn {
+  background-color: #8a2be2; /* bright purple */
+  color: #fff;
+}
+
+.resume-container .add-btn:hover {
+  background-color: #7a1be0;
+}
+
+.resume-container .remove-btn {
+  background-color: #da70d6; /* lighter purple/pinkish */
+  color: #fff;
+}
+
+.resume-container .remove-btn:hover {
+  background-color: #c15ac8;
+}
+
+/* =========================
+   Submit Button
+   ========================= */
+.resume-container .btn-submit {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #6a0dad; /* deep purple */
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.resume-container .btn-submit:hover {
+  background: #4b0082; /* darker purple on hover */
+}

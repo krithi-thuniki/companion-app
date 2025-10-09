@@ -1,0 +1,16 @@
+.diet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: white;
+}
+
+.diet-table th, .diet-table td {
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px;
+  text-align: center;
+}
+
+.diet-table th {
+  background: rgba(0, 128, 96, 0.8);
+}

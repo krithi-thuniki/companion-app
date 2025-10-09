@@ -1,0 +1,9 @@
+### Nutrition info for Banana (Nutritionix API)
+POST https://trackapi.nutritionix.com/v2/natural/nutrients
+Content-Type: application/json
+x-app-id: 07679c0c
+x-app-key: 547672dac5ff3a9e67c13c4775f1484c
+
+{
+  "query": "2 eggs and a banana"
+}

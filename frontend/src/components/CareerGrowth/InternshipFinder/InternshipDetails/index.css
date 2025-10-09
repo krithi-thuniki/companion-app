@@ -1,0 +1,21 @@
+.internship-details {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.internship-details button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.internship-details button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

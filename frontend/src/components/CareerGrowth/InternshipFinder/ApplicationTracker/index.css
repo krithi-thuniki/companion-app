@@ -1,0 +1,172 @@
+.application-tracker {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.tracker-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #333;
+}
+
+/* Add Job Form */
+.add-job-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.add-job-form input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  flex: 1 1 150px;
+}
+
+.add-job-form .add-btn {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-job-form .add-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Application Card */
+.application-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.application-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-2px);
+}
+
+.application-details {
+  flex: 1;
+}
+
+.job-title {
+  font-size: 18px;
+  margin: 0;
+  color: #0073e6;
+}
+
+.company-name {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.location {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  margin-top: 5px;
+}
+
+/* Status Colors */
+.status-tag.applied { background-color: #0073e6; }
+.status-tag.interview-scheduled { background-color: #f0ad4e; }
+.status-tag.accepted { background-color: #28a745; }
+.status-tag.rejected { background-color: #dc3545; }
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.actions select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-img {
+  width: 100px;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.empty-state p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .application-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .add-job-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

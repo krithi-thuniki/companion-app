@@ -1,0 +1,13 @@
+.badges {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+.badges ul { list-style: none; padding: 0; }
+.badges li {
+  padding: 10px;
+  margin: 8px 0;
+  background: #eaf7ff;
+  border-radius: 6px;
+  font-weight: bold;
+}

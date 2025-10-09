@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f3f3f3;
+}
+
+.login-container {
+  display: flex;
+  width: 850px;
+  height: 500px;
+  border-radius: 18px;
+  overflow: hidden;
+box-shadow: 0 6px 15px rgba(155, 89, 182, 0.3), 
+              0 0 12px rgba(155, 89, 182, 0.25);  
+}
+
+/* White Container */
+.login-form-container {
+  flex: 1;
+  background: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-title {
+  font-size: 24px; /* Hello! */
+  color: #333;
+  text-align: center;
+  margin-top: 40px; /* Added top margin */
+}
+.login-title1 {
+  font-size: 16px; /* normal text */
+  color: #333;
+  text-align: center;
+}
+
+.login-form .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 10px 14px;
+  background: #fafafa;
+  box-shadow: 0 4px 8px rgba(155, 89, 182, 0.2), 
+              0 0 6px rgba(155, 89, 182, 0.15);
+   /* smooth light violet */
+  
+}
+.input::placeholder {
+  font-size: 14px;
+}
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+  margin-left: 10px;
+
+}
+
+.input-icon {
+  font-size: 28px;
+  color: #7022a8;
+  margin-left:8px;
+  margin-top: 3px;
+  margin-bottom: px;
+}
+
+.eye-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #7022a8;
+  margin-left: 10px;
+}
+
+.login-btn {
+  width: 60%;
+  padding: 8px;
+font-size: 15px;
+  font-weight: bold;  border: none;
+  border-radius: 18px;
+background: linear-gradient(to right, #9b5de5, #3f37c9);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-left:60px;
+  margin-top: 8px;
+}
+
+.login-btn:hover {
+background: linear-gradient(to right, #9b5de5, #3f37c9);
+}
+
+/* Violet Container */
+.welcome-container {
+  flex: 1;
+background: linear-gradient(to bottom, #9b5de5, #3f37c9);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.welcome-quote {
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 20px 0;
+  font-size: 0.9rem;
+}
+
+.remember-me input {
+  margin-right: 5px;
+    font-size: 13px;
+  margin-top:10px ;
+  margin-left: 5px;
+}
+
+
+.forgot-password {
+  text-decoration: none;
+  color: #6c63ff;
+  font-size: 13px;
+    margin-top:10px ;
+
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+
+.signup-text a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 500;
+}

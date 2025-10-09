@@ -1,0 +1,158 @@
+/* Ensure content doesn’t hide under fixed navbar */
+.page-content {
+  padding-top: 90px; /* navbar height (70px) + extra spacing */
+}
+
+/* Journal Container */
+.journal-container {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px #9b5de5;
+}
+
+.journal-container h1 {
+  text-align: center;
+  color: #5f2eea;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+button {
+  background: #9b5de5;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #7d3dcf;
+}
+
+.today-entry {
+  margin-top: 20px;
+  background: #f3f0ff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.past-entries {
+  margin-top: 30px;
+}
+
+.past-entries ul {
+  list-style: none;
+  padding: 0;
+}
+
+.past-entries li {
+  background: #f8f9ff;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.page-content {
+  padding-top: 90px; /* offset for fixed navbar */
+}
+
+.journal-container {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px #9b5de5;
+}
+
+.journal-container h1 {
+  text-align: center;
+  color: #5f2eea;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+button {
+  background: #9b5de5;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #7d3dcf;
+}
+
+.today-entry {
+  margin-top: 20px;
+  background: #f3f0ff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.past-entries {
+  margin-top: 30px;
+}
+
+.past-entries ul {
+  list-style: none;
+  padding: 0;
+}
+
+.past-entries li {
+  background: #f8f9ff;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.entry-actions {
+  margin-top: 6px;
+}
+
+.entry-actions button {
+  margin-right: 8px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.search-bar {
+  margin: 15px 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.streak {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #5f2eea;
+}

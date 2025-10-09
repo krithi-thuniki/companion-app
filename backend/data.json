@@ -1,0 +1,23 @@
+{
+  "notes": [
+    {
+      "id": 1755328691714,
+      "title": "myfirstassignment",
+      "content": "it has alarge content to be stored "
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1755328713477,
+      "title": "myfirstassignment",
+      "dueDate": "2025-08-19"
+    }
+  ],
+  "peers": [
+    {
+      "id": 1755328719879,
+      "name": "rahul",
+      "subject": "rahul"
+    }
+  ]
+}

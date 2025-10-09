@@ -1,0 +1,12 @@
+.download-pdf {
+  text-align: center;
+  margin-top: 50px;
+}
+.download-pdf button {
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

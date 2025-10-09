@@ -1,0 +1,14 @@
+.diet-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+  color: white;
+}
+
+.diet-list li {
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}

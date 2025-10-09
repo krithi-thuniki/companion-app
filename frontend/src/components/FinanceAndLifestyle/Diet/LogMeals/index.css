@@ -1,0 +1,39 @@
+.diet-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.diet-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.diet-form button {
+  background: #008060;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.diet-form button:hover {
+  background: #006b50;
+}
+
+.diet-list {
+  list-style: none;
+  padding: 0;
+  color: white;
+  text-align: left;
+}
+
+.diet-list li {
+  margin-bottom: 8px;
+  padding: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+}
