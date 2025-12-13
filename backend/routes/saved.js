@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const ctrl = require("../controllers/savedController");
+const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", ctrl.listSaved);
-router.post("/", ctrl.saveItem);
-router.delete("/:id", ctrl.removeSaved);
+// ✅ Apply protection so req.user.id is accessible
+router.get("/", protect, ctrl.listSaved);
+router.post("/", protect, ctrl.saveItem);
+router.delete("/:id", protect, ctrl.removeSaved);
 
 module.exports = router;

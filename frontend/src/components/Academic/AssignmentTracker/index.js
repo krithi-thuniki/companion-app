@@ -191,11 +191,29 @@ const AssignmentTracker = () => {
           </div>
         );
       } else {
-        const date = new Date(year, month, dayNumber);
-        const dateStr = format(date, "yyyy-MM-dd");
-        const todaysTasks = tasks.filter(
-          (t) => format(new Date(t.deadline), "yyyy-MM-dd") === dateStr
-        );
+       const date = new Date(year, month, dayNumber);
+const dateStr = format(date, "yyyy-MM-dd");
+
+// FIXED: always parse ISO string properly to avoid timezone shift
+// FIX: Convert stored ISO date to its true UTC calendar day
+const todaysTasks = tasks.filter((t) => {
+  if (!t.deadline) return false;
+
+  const d = parseISO(t.deadline);  // interpret MongoDB stored date
+
+  // extract only the UTC date parts (this avoids timezone shift)
+  const fixedDate = new Date(
+    d.getUTCFullYear(),
+    d.getUTCMonth(),
+    d.getUTCDate()
+  );
+
+  const fixedDateStr = format(fixedDate, "yyyy-MM-dd");
+
+  return fixedDateStr === dateStr;
+});
+
+
 
         const isCurrentDay = isToday(date);
 

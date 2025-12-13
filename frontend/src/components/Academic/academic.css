@@ -1,0 +1,18 @@
+.sub-navbar {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.sub-nav-item {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sub-nav-item:hover {
+  color: #6d28d9; /* Violet */
+}

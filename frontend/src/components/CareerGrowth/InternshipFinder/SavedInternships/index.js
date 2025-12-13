@@ -8,8 +8,21 @@ const SavedInternships = () => {
   const [saved, setSaved] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("savedInternships")) || [];
-    setSaved(data);
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    fetch("http://localhost:5000/api/saved", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok) {
+          setSaved(data.items || []);
+        } else {
+          console.error("❌ Failed to load saved internships:", data.error);
+        }
+      })
+      .catch((err) => console.error("❌ Error fetching saved internships:", err));
   }, []);
 
   return (
@@ -28,7 +41,10 @@ const SavedInternships = () => {
               alt="No Saved Internships"
               className="empty-img"
             />
-            <p>You haven't saved any internships yet. Start exploring and save the ones you like!</p>
+            <p>
+              You haven't saved any internships yet. Start exploring and save
+              the ones you like!
+            </p>
             <Link to="/career/internships" className="explore-btn">
               Explore Internships
             </Link>
@@ -36,17 +52,21 @@ const SavedInternships = () => {
         ) : (
           <ul className="saved-list">
             {saved.map((job) => (
-              <li key={job.job_id} className="saved-card">
+              <li key={job._id || job.job_id} className="saved-card">
                 <div className="card-content">
                   <div>
-                    <h3>{job.job_title}</h3>
-                    <p className="company">{job.employer_name}</p>
+                    <h3>{job.title || job.job_title}</h3>
+                    <p className="company">
+                      {job.company || job.employer_name}
+                    </p>
                     <p className="location">
-                      {job.job_city}, {job.job_country}
+                      {job.location
+                        ? job.location
+                        : `${job.job_city || ""}, ${job.job_country || ""}`}
                     </p>
                   </div>
                   <Link
-                    to={`/career/internships/details/${job.job_id}`}
+                    to={`/career/internships/details/${job.opportunityId || job.job_id}`}
                     state={{ job }}
                     className="details-btn"
                   >

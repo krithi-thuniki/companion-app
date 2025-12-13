@@ -33,7 +33,7 @@ const ChatPage = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // ✅ Fetch group if not passed
+  // Fetch group if not passed
   useEffect(() => {
     if (group) return;
     axios
@@ -45,7 +45,7 @@ const ChatPage = () => {
       .catch(() => navigate("/academic/peer-learning"));
   }, [group, groupId, authHeader, navigate]);
 
-  // ✅ Fetch messages
+  // Fetch messages
   useEffect(() => {
     if (!group) return;
     axios
@@ -54,19 +54,16 @@ const ChatPage = () => {
       .catch((err) => console.error("Error loading messages:", err));
   }, [group, authHeader]);
 
-  // ✅ Initialize socket with JWT
+  // Initialize socket with JWT
   useEffect(() => {
     if (!group) return;
 
-    const socketInstance = io(API, {
-      auth: { token },
-    });
+    const socketInstance = io(API, { auth: { token } });
     setChatSocket(socketInstance);
 
     socketInstance.emit("join_group", { groupId: group.id });
 
-    const handleNewMessage = (msg) =>
-      setMessages((prev) => [...prev, msg]);
+    const handleNewMessage = (msg) => setMessages((prev) => [...prev, msg]);
     socketInstance.on("new_message", handleNewMessage);
 
     return () => {
@@ -76,7 +73,7 @@ const ChatPage = () => {
     };
   }, [group, token]);
 
-  // ✅ Scroll to bottom on message update
+  // Scroll to bottom on messages update
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -110,16 +107,18 @@ const ChatPage = () => {
         {/* Sidebar */}
         <div className="chat-sidebar">
           <h2>{group.name}</h2>
-          {group.description && (
-            <p className="group-desc">{group.description}</p>
-          )}
+          {group.description && <p className="group-desc">{group.description}</p>}
 
           <h4>Members</h4>
           <ul className="member-list">
             {(group.members || []).map((m) => {
-              const username = m?.username || m?.name || "Unknown";
+              // Ensure username is a string
+              const username =
+                typeof m === "string"
+                  ? m
+                  : m.username || m.name || "Unknown";
               return (
-                <li key={m.id || username} className="member-item">
+                <li key={m._id || username} className="member-item">
                   <div className="avatar">
                     {username[0]?.toUpperCase() || "U"}
                     <span className="status-dot online"></span>
@@ -135,7 +134,11 @@ const ChatPage = () => {
         <div className="chat-main">
           <div className="messages">
             {messages.map((msg) => {
-              const sender = msg.senderName || "User";
+              // Extract sender as string
+              const sender =
+                msg.senderName ||
+                (msg.sender?.name ?? msg.sender?.username) ||
+                "User";
               const created = msg.createdAt
                 ? new Date(msg.createdAt).toLocaleTimeString([], {
                     hour: "2-digit",

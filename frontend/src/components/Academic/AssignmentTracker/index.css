@@ -111,9 +111,11 @@
 .task-card.high {
   border-left: 6px solid #e11d48;
 }
+
 .task-card.medium {
   border-left: 6px solid #f59e0b;
 }
+
 .task-card.low {
   border-left: 6px solid #10b981;
 }
@@ -139,12 +141,10 @@
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
   min-height: 450px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  overflow: visible;
 }
 
 .calendar-section h2 {
@@ -154,7 +154,6 @@
   text-align: left;
 }
 
-/* nav buttons */
 .nav-btn {
   background: none;
   border: none;
@@ -164,12 +163,13 @@
   padding: 6px;
   border-radius: 6px;
 }
+
 .nav-btn:hover {
-  background: rgba(79,70,229,0.08);
+  background: rgba(79, 70, 229, 0.08);
 }
 
 /* =============================
-   Custom Calendar Grid
+   Calendar Grid
 ============================= */
 .calendar-grid {
   display: grid;
@@ -178,7 +178,6 @@
   margin-top: 6px;
 }
 
-/* Weekday headers */
 .calendar-header {
   text-align: center;
   font-weight: 700;
@@ -186,10 +185,8 @@
   border-radius: 8px;
   padding: 8px 6px;
   color: #374151;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
 }
 
-/* Each day cell */
 .calendar-day {
   display: flex;
   flex-direction: column;
@@ -200,19 +197,12 @@
   transition: transform 0.12s ease, background 0.12s ease;
 }
 
-/* empty day: keep spacing but no number */
 .calendar-day.empty {
   background: transparent;
 }
 
-.calendar-empty {
-  height: 38px;
-  width: 100%;
-}
-
-/* the little rounded box for date number (matches screenshot) */
+/* Date Pill */
 .date-pill {
-  display: inline-block;
   min-width: 40px;
   padding: 8px 10px;
   border-radius: 8px;
@@ -221,34 +211,31 @@
   font-weight: 700;
   color: #111827;
   text-align: center;
-  box-shadow: 0 1px 0 rgba(16,24,40,0.03);
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.03);
 }
 
-/* hover effect for non-empty days */
 .calendar-day:not(.empty):hover {
   transform: translateY(-3px);
 }
 
-/* today's highlight (applies to the cell wrapper) */
 .today-highlight {
-  box-shadow: 0 0 0 2px rgba(79,70,229,0.08);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.08);
   border-radius: 10px;
 }
+
 .today-highlight .date-pill {
   background: #c7d2fe;
   border-color: #b3b6ff;
 }
 
-/* Dots for priorities under date */
+/* Dots below the date */
 .dots-container {
   display: flex;
-  align-items: center;
   gap: 4px;
   margin-top: 6px;
   min-height: 8px;
 }
 
-/* small colored dot */
 .deadline-dot {
   width: 8px;
   height: 8px;
@@ -256,7 +243,6 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
 }
 
-/* extra count when more than 3 tasks */
 .extra-count {
   font-size: 10px;
   color: #374151;
@@ -266,13 +252,15 @@
   font-weight: 700;
 }
 
-/* selected/active (if you later integrate selection) */
+/* Selected day */
 .calendar-day.selected .date-pill {
   background: #4f46e5;
   color: #fff;
 }
 
-/* Responsive */
+/* =============================
+   Responsive
+============================= */
 @media (max-width: 1024px) {
   .tracker-container {
     flex-direction: column;

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "../../../Navbar";
 import "./index.css";
 
@@ -21,13 +22,43 @@ const calcTDEE = ({ age, gender, height, weight, activity }) => {
   return Math.round(bmr * (factors[activity] || 1.2));
 };
 
-const WeeklyReports = ({ weeklyMeals = [], profile }) => {
+const WeeklyReports = ({ profile }) => {
+  const [weeklyMeals, setWeeklyMeals] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // ✅ Fetch meals from backend (MongoDB)
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.warn("⚠️ No token found — please log in first.");
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const res = await axios.get("http://localhost:5000/api/meals", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setWeeklyMeals(res.data);
+      } catch (err) {
+        console.error("❌ Fetch meals error:", err.response?.data || err.message);
+        alert("Failed to load weekly report.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMeals();
+  }, []);
+
   // 📊 Group meals by day
   const dailyTotals = {};
   weeklyMeals.forEach((meal) => {
-    if (!meal.day || !meal.cal) return;
-    if (!dailyTotals[meal.day]) dailyTotals[meal.day] = 0;
-    dailyTotals[meal.day] += meal.cal;
+    if (!meal.date || !meal.calories) return;
+    const day = new Date(meal.date).toLocaleDateString("en-US", { weekday: "short" });
+    if (!dailyTotals[day]) dailyTotals[day] = 0;
+    dailyTotals[day] += meal.calories;
   });
 
   const reports = Object.keys(dailyTotals).map((day) => ({
@@ -45,9 +76,11 @@ const WeeklyReports = ({ weeklyMeals = [], profile }) => {
   let status = "";
   if (tdee) {
     if (avgCalories < tdee - 200) {
-      status = "⚠️ You are under-eating compared to your needs. Consider slightly bigger portions.";
+      status =
+        "⚠️ You are under-eating compared to your needs. Consider slightly bigger portions.";
     } else if (avgCalories > tdee + 200) {
-      status = "⚠️ You are eating more than needed. The foods are healthy, but portions may be large. Try reducing rice/chapati amounts or cooking with less oil.";
+      status =
+        "⚠️ You are eating more than needed. The foods are healthy, but portions may be large. Try reducing rice/chapati amounts or cooking with less oil.";
     } else {
       status = "✅ Excellent! Your calorie intake matches your body’s needs.";
     }
@@ -59,47 +92,53 @@ const WeeklyReports = ({ weeklyMeals = [], profile }) => {
       <div className="diet-container">
         <h2>📅 Weekly Report</h2>
 
-        {/* 👤 Profile Summary */}
-        {profile && (
-          <div className="profile-summary">
-            <h3>👤 Profile Summary</h3>
-            <p>Age: {profile.age}</p>
-            <p>Gender: {profile.gender}</p>
-            <p>Height: {profile.height} cm</p>
-            <p>Weight: {profile.weight} kg</p>
-            <p>Activity Level: {profile.activity}</p>
-          </div>
-        )}
-
-        {/* 🍽️ Meals Report */}
-        {reports.length === 0 ? (
-          <p>No meals recorded for this week.</p>
+        {loading ? (
+          <p>Loading your weekly data...</p>
         ) : (
           <>
-            <table className="diet-table">
-              <thead>
-                <tr>
-                  <th>Day</th>
-                  <th>Calories</th>
-                </tr>
-              </thead>
-              <tbody>
-                {reports.map((r, i) => (
-                  <tr key={i}>
-                    <td>{r.day}</td>
-                    <td>{r.calories.toFixed(2)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <p>📊 Average daily calories: {avgCalories.toFixed(2)}</p>
-
-            {tdee && (
-              <div className="dietician-note">
-                <p>🔥 Your TDEE: {tdee} kcal</p>
-                <p>🧑‍⚕️ Dietician’s Note: {status}</p>
+            {/* 👤 Profile Summary */}
+            {profile && (
+              <div className="profile-summary">
+                <h3>👤 Profile Summary</h3>
+                <p>Age: {profile.age}</p>
+                <p>Gender: {profile.gender}</p>
+                <p>Height: {profile.height} cm</p>
+                <p>Weight: {profile.weight} kg</p>
+                <p>Activity Level: {profile.activity}</p>
               </div>
+            )}
+
+            {/* 🍽️ Meals Report */}
+            {reports.length === 0 ? (
+              <p>No meals recorded for this week.</p>
+            ) : (
+              <>
+                <table className="diet-table">
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Calories</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {reports.map((r, i) => (
+                      <tr key={i}>
+                        <td>{r.day}</td>
+                        <td>{r.calories.toFixed(2)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                <p>📊 Average daily calories: {avgCalories.toFixed(2)}</p>
+
+                {tdee && (
+                  <div className="dietician-note">
+                    <p>🔥 Your TDEE: {tdee} kcal</p>
+                    <p>🧑‍⚕️ Dietician’s Note: {status}</p>
+                  </div>
+                )}
+              </>
             )}
           </>
         )}

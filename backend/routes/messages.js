@@ -1,10 +1,11 @@
+// backend/routes/messages.js
 const express = require("express");
 const router = express.Router();
-const Message = require("../../models/message");
-const { authMiddleware } = require("../../middleware/auth");
+const Message = require("../models/message");
+const { protect } = require("../middleware/authMiddleware"); // ✅ fixed import
 
-// Get messages of a group
-router.get("/:groupId", authMiddleware, async (req, res) => {
+// ✅ Get messages of a specific group
+router.get("/:groupId", protect, async (req, res) => {
   try {
     const { groupId } = req.params;
     const messages = await Message.find({ group: groupId })
@@ -12,7 +13,7 @@ router.get("/:groupId", authMiddleware, async (req, res) => {
       .lean();
 
     res.json(
-      messages.map(m => ({
+      messages.map((m) => ({
         id: m._id,
         groupId: m.group,
         userId: m.user,
@@ -22,6 +23,7 @@ router.get("/:groupId", authMiddleware, async (req, res) => {
       }))
     );
   } catch (err) {
+    console.error("❌ Error fetching messages:", err);
     res.status(500).json({ error: err.message });
   }
 });

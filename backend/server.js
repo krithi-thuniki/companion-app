@@ -1,26 +1,32 @@
-require("dotenv").config(); // ✅ Load environment variables
+// ✅ Load environment variables
+require("dotenv").config();
 
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const jwt = require("jsonwebtoken");
-const connectDB = require("./config/db"); // MongoDB connection
+const connectDB = require("./config/db");
 const Message = require("./models/message");
 const Group = require("./models/group");
 
-
 // ✅ Routes
 const authRoutes = require("./routes/auth");
-// ❌ Removed chat route (no chat.js file)
 const groupRoutes = require("./routes/groups");
 const messageRoutes = require("./routes/messages");
 const opportunitiesRoutes = require("./routes/opportunities");
 const savedRoutes = require("./routes/saved");
 const applicationsRoutes = require("./routes/applications");
 const badgesRoutes = require("./routes/badges");
-const tasksRoutes = require("./routes/tasks"); // ✅ Tasks route
+const tasksRoutes = require("./routes/tasks");
+const pomodoroRoutes = require("./routes/pomodoro");
+const journalRoutes = require("./routes/journalRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
+const mealRoutes = require("./routes/mealRoutes");
+const progressRoutes = require("./routes/progressRoutes");
+const profileRoutes = require("./routes/profileRoutes"); // ✅ NEW LINE — added
 
+// ✅ Server Config
 const SECRET_KEY = process.env.JWT_SECRET || "mysecretkey";
 const PORT = process.env.PORT || 5000;
 
@@ -31,16 +37,27 @@ const server = http.createServer(app);
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
+// 🧩 Debug incoming requests
+app.use((req, res, next) => {
+  console.log("📥 Incoming:", req.method, req.url);
+  next();
+});
+
 // ✅ API Routes
 app.use("/api/auth", authRoutes);
-// ❌ Removed: app.use("/api/chat", chatRoutes);
 app.use("/api/groups", groupRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/opportunities", opportunitiesRoutes);
 app.use("/api/saved", savedRoutes);
 app.use("/api/applications", applicationsRoutes);
 app.use("/api/badges", badgesRoutes);
-app.use("/api/tasks", tasksRoutes); // ✅ Tasks
+app.use("/api/tasks", tasksRoutes);
+app.use("/api/pomodoro", pomodoroRoutes);
+app.use("/api/journal", journalRoutes);
+app.use("/api/expenses", expenseRoutes);
+app.use("/api/meals", mealRoutes);
+app.use("/api/progress", progressRoutes);
+app.use("/api/profile", profileRoutes); // ✅ NEW LINE — mount profile routes
 
 // ✅ Connect to MongoDB
 connectDB();
@@ -50,7 +67,7 @@ const io = new Server(server, {
   cors: { origin: "http://localhost:3000", credentials: true },
 });
 
-// ✅ Middleware for JWT auth
+// ✅ JWT Auth for Socket.IO
 io.use((socket, next) => {
   const token = socket.handshake.auth?.token;
   if (!token) {

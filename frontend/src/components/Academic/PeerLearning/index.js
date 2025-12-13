@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../Navbar";
 import axios from "axios";
 import "./index.css";
 
-// ✅ Dynamic API base URL
+// Dynamic API base URL
 const API = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const PeerLearning = () => {
@@ -13,9 +13,19 @@ const PeerLearning = () => {
   const [groupName, setGroupName] = useState("");
   const [groupDesc, setGroupDesc] = useState("");
 
-  const authHeader = token ? { Authorization: `Bearer ${token}` } : {};
+  // ✅ Memoize authHeader to prevent useEffect from running every render
+  const authHeader = useMemo(() => {
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }, [token]);
 
-  // ✅ Fetch all groups
+  // Helper to safely get string from object or string
+  const getString = (value, fallback = "Unknown") => {
+    if (!value) return fallback;
+    if (typeof value === "string") return value;
+    return value.name || value.username || fallback;
+  };
+
+  // Fetch all groups
   useEffect(() => {
     axios
       .get(`${API}/api/groups`, { headers: authHeader })
@@ -33,10 +43,9 @@ const PeerLearning = () => {
         console.error("Failed to fetch groups:", err);
         setGroups([]);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [authHeader]); // ✅ dependency now safe
 
-  // ✅ Create group (JWT handles admin)
+  // Create group
   const createGroup = async () => {
     if (!groupName.trim()) return alert("Enter a group name");
     try {
@@ -55,7 +64,7 @@ const PeerLearning = () => {
     }
   };
 
-  // ✅ Join group (JWT token-based)
+  // Join group
   const joinGroup = async (groupId) => {
     try {
       const res = await axios.post(
@@ -73,7 +82,7 @@ const PeerLearning = () => {
     }
   };
 
-  // ✅ Delete group
+  // Delete group
   const deleteGroup = async (groupId) => {
     if (!window.confirm("Delete this group?")) return;
     try {
@@ -127,7 +136,7 @@ const PeerLearning = () => {
                 <p>
                   Members: {(group.members || []).length}
                   <br />
-                  Admin: <strong>{group.created_by ?? "Not set"}</strong>
+                  Admin: <strong>{getString(group.created_by, "Not set")}</strong>
                 </p>
 
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>

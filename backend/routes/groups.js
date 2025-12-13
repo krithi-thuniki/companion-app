@@ -1,12 +1,13 @@
+// backend/routes/groups.js
 const express = require("express");
 const router = express.Router();
-const { verifyToken } = require("../middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware"); // ✅ fixed import
 const Group = require("../models/group");
 
 // ✅ Get all groups
 router.get("/", async (req, res) => {
   try {
-    const groups = await Group.find().populate("admin members", "name email");
+    const groups = await Group.find().populate("created_by members", "name email");
     res.json(groups);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -14,15 +15,17 @@ router.get("/", async (req, res) => {
 });
 
 // ✅ Create a new group
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const { name, description } = req.body;
+
     const group = new Group({
       name,
       description,
-      admin: req.user.id,
+      created_by: req.user.id, // ✅ matches schema
       members: [req.user.id],
     });
+
     await group.save();
     res.status(201).json(group);
   } catch (err) {
@@ -31,7 +34,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 // ✅ Join a group
-router.post("/:id/join", verifyToken, async (req, res) => {
+router.post("/:id/join", protect, async (req, res) => {
   try {
     const group = await Group.findById(req.params.id);
     if (!group) return res.status(404).json({ error: "Group not found" });
@@ -48,7 +51,7 @@ router.post("/:id/join", verifyToken, async (req, res) => {
 });
 
 // ✅ Leave a group
-router.delete("/:id/leave", verifyToken, async (req, res) => {
+router.delete("/:id/leave", protect, async (req, res) => {
   try {
     const group = await Group.findById(req.params.id);
     if (!group) return res.status(404).json({ error: "Group not found" });

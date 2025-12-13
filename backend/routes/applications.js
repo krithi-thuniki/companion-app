@@ -1,9 +1,23 @@
-const router = require("express").Router();
-const ctrl = require("../controllers/applicationsController");
-const auth = require("../middleware/authMiddleware"); // your jwt auth middleware
+const express = require("express");
+const router = express.Router();
+const {
+  listApplications,
+  createApplication,
+  updateStatus,
+  deleteApplication,
+} = require("../controllers/applicationsController");
+const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", auth, ctrl.listApplications);
-router.post("/", auth, ctrl.createApplication);
-router.patch("/:id", auth, ctrl.updateStatus);
+// ✅ List all applications for the logged-in user
+router.get("/", protect, listApplications);
+
+// ✅ Create a new application (used in InternshipDetails.jsx)
+router.post("/", protect, createApplication);
+
+// ✅ Update status (used in ApplicationTracker.jsx)
+router.patch("/:id", protect, updateStatus);
+
+// ✅ Delete an application
+router.delete("/:id", protect, deleteApplication);
 
 module.exports = router;

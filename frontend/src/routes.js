@@ -9,6 +9,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import HomePage from "./components/HomePage";
 
 // ✅ Academic Tools
+import AcademicPage from "./components/Academic";              // ⭐ NEW MAIN PAGE
 import SmartNotes from "./components/Academic/SmartNotes";
 import AssignmentTracker from "./components/Academic/AssignmentTracker";
 import PeerLearning from "./components/Academic/PeerLearning";
@@ -44,6 +45,7 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* Default route → Login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
 
@@ -52,7 +54,7 @@ function AppRoutes() {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Protected Routes */}
+        {/* Home */}
         <Route
           path="/home"
           element={
@@ -62,7 +64,21 @@ function AppRoutes() {
           }
         />
 
-        {/* Academic Tools */}
+        {/* ===========================
+              ⭐ Academic Main Page
+        ============================ */}
+        <Route
+          path="/academic"
+          element={
+            <PrivateRoute>
+              <AcademicPage />
+            </PrivateRoute>
+          }
+        />
+
+        {/* ===========================
+              Academic Subpages
+        ============================ */}
         <Route
           path="/academic/smart-notes"
           element={
@@ -71,6 +87,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/academic/assignment-tracker"
           element={
@@ -79,6 +96,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/academic/peer-learning"
           element={
@@ -87,19 +105,21 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/academic/faqs"
-          element={
-            <PrivateRoute>
-              <FAQs />
-            </PrivateRoute>
-          }
-        />
+
         <Route
           path="/peerlearning/chat/:groupId"
           element={
             <PrivateRoute>
               <ChatPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/academic/faqs"
+          element={
+            <PrivateRoute>
+              <FAQs />
             </PrivateRoute>
           }
         />
@@ -113,6 +133,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/productivity/daily-journal"
           element={
@@ -122,7 +143,7 @@ function AppRoutes() {
           }
         />
 
-        {/* Finance & Lifestyle */}
+        {/* Finance */}
         <Route
           path="/finance/shared-expenses"
           element={
@@ -131,6 +152,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/finance/diet/*"
           element={
@@ -149,6 +171,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career-growth/internship-finder"
           element={
@@ -158,7 +181,7 @@ function AppRoutes() {
           }
         />
 
-        {/* Career Growth Submodules → Resume Builder */}
+        {/* Resume Builder Submodules */}
         <Route
           path="/career/resume-builder/form"
           element={
@@ -167,6 +190,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/resume-builder/preview"
           element={
@@ -175,6 +199,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/resume-builder/download"
           element={
@@ -184,7 +209,7 @@ function AppRoutes() {
           }
         />
 
-        {/* Career Growth Submodules → Internship Finder */}
+        {/* Internship Finder Submodules */}
         <Route
           path="/career/internships/search"
           element={
@@ -193,6 +218,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/internships/list"
           element={
@@ -201,6 +227,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/internships/details/:id"
           element={
@@ -209,6 +236,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/internships/saved"
           element={
@@ -217,6 +245,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/internships/tracker"
           element={
@@ -225,6 +254,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/career/internships/badges"
           element={
@@ -233,6 +263,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+
       </Routes>
     </BrowserRouter>
   );
