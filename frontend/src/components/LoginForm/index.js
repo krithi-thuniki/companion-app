@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,15 +13,23 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Restore remembered email
+  // ✅ path user tried to access before login
+  const redirectPath = location.state?.from || "/";
+
+  // Restore remembered email + auto redirect if already logged in
   useEffect(() => {
     const savedEmail = localStorage.getItem("rememberedEmail");
     if (savedEmail) {
       setEmail(savedEmail);
       setRememberMe(true);
     }
-  }, []);
+
+    if (localStorage.getItem("token")) {
+      navigate(redirectPath, { replace: true });
+    }
+  }, [navigate, redirectPath]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +49,6 @@ const LoginForm = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("currentUser", JSON.stringify(data.user));
 
-      // remember email if requested
       if (rememberMe) {
         localStorage.setItem("rememberedEmail", email);
       } else {
@@ -49,7 +56,11 @@ const LoginForm = () => {
       }
 
       toast.success("Login successful!");
-      setTimeout(() => navigate("/home"), 700);
+
+      // ✅ Redirect to page user originally clicked
+      setTimeout(() => {
+        navigate(redirectPath, { replace: true });
+      }, 700);
     } catch (err) {
       toast.error(err.message || "Login failed");
     } finally {

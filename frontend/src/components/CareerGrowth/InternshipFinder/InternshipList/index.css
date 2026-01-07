@@ -12,6 +12,8 @@
   color: #4b0082;
   margin-bottom: 30px;
   font-weight: 700;
+    margin-top: 80px;      /* ✅ ADD THIS */
+
 }
 
 /* Filters Section */
@@ -67,6 +69,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+    color: #333; /* changed from green/purple */
+
 }
 
 .internship-card:hover {
@@ -101,6 +105,7 @@
 
 .save-btn {
   background: #4b0082;
+  
   color: #fff;
 }
 
@@ -109,12 +114,12 @@
 }
 
 .saved {
-  background: #ffc107;
+  background: #333;
   color: #222;
 }
 
 .saved:hover {
-  background: #e0a800;
+  background: #333;
 }
 
 /* Deadline Text */
@@ -132,19 +137,36 @@
   margin-top: 10px;
 }
 
+/* Default Apply Button */
 .apply-btn {
-  background: #28a745;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
+  background: #ffffff;
+  color: #6a11cb;
+  border: 2px solid #6a11cb;
+  padding: 8px 18px;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
+  
 }
 
+/* Hover Effect */
 .apply-btn:hover {
-  background: #1e7e34;
+  background: linear-gradient(135deg, #6a11cb, #8e2de2);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(138, 43, 226, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Applied State */
+.applied-btn {
+  background: #ede9fe;
+  color: #6a11cb;
+  border: 2px solid #c4b5fd;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: not-allowed;
 }
 
 /* Modal Overlay */
@@ -264,5 +286,128 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+/* Subtitle */
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Sticky filters */
+.filters.sticky {
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+/* Card text hierarchy */
+.company {
+  font-weight: 600;
+  color: #333;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.1rem;
+  color: #999;
+}
+/* Form grid layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Full width fields */
+.apply-form textarea,
+.apply-form input[type="file"] {
+  grid-column: span 2;
+}
+
+/* Select styling */
+.apply-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* Modal heading */
+.modal h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Softer inputs */
+.apply-form input,
+.apply-form textarea,
+.apply-form select {
+  background: #fafafa;
+}
+
+/* Better buttons */
+.submit-btn {
+  background: linear-gradient(135deg, #4b0082, #6a0dad);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #36005c, #4b0082);
+}
+
+/* Responsive form */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.success-toast {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  background: linear-gradient(135deg, #6a11cb, #8e2de2);
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 12px 30px rgba(138, 43, 226, 0.35);
+  animation: slideFade 0.4s ease-out;
+  z-index: 9999;
+}
+
+@keyframes slideFade {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

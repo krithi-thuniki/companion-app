@@ -18,7 +18,7 @@ const DietTracker = () => {
   return (
     <Routes>
       {/* Dashboard (default index route) */}
-      <Route path="" element={<Diet />} />
+<Route index element={<Diet />} />
 
       {/* Profile Form to set user details */}
       <Route path="profile" element={<ProfileForm setProfile={setProfile} />} />

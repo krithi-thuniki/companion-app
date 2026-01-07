@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("token");
 
   // Logout handler
   const handleLogout = async () => {
@@ -23,50 +24,86 @@ const Navbar = () => {
       console.error("Logout API error:", err);
     } finally {
       localStorage.removeItem("token");
-      localStorage.removeItem("name");
+      localStorage.removeItem("currentUser");
       navigate("/login");
     }
   };
 
+  // Handle protected navigation
+  const handleProtectedNav = (path) => {
+    if (isLoggedIn) {
+      navigate(path);
+    } else {
+      navigate("/login", { state: { from: path } });
+    }
+  };
+
+  // Navigate to login
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar">
-      {/* LEFT LOGO */}
-      <div className="navbar-logo">
+      <div 
+        className="navbar-logo" 
+        onClick={() => navigate("/")} 
+        style={{ cursor: "pointer" }}
+      >
         <h2>MyApp</h2>
       </div>
 
-      {/* MAIN NAVIGATION */}
       <ul className="navbar-main">
         <li>
-          <Link to="/academic" className="nav-item">
+          <span
+            className="nav-item"
+            onClick={() => handleProtectedNav("/academic")}
+            style={{ cursor: "pointer" }}
+          >
             Academic Tools
-          </Link>
+          </span>
         </li>
-
         <li>
-          <Link to="/productivity" className="nav-item">
+          <span
+            className="nav-item"
+            onClick={() => handleProtectedNav("/productivity")}
+            style={{ cursor: "pointer" }}
+          >
             Productivity
-          </Link>
+          </span>
         </li>
-
         <li>
-          <Link to="/finance" className="nav-item">
+          <span
+            className="nav-item"
+            onClick={() => handleProtectedNav("/finance")}
+            style={{ cursor: "pointer" }}
+          >
             Finance & Lifestyle
-          </Link>
+          </span>
         </li>
-
         <li>
-          <Link to="/career-growth" className="nav-item">
+          <span
+            className="nav-item"
+            onClick={() => handleProtectedNav("/career")}
+            style={{ cursor: "pointer" }}
+          >
             Career & Skill Growth
-          </Link>
+          </span>
         </li>
       </ul>
 
-      {/* LOGOUT BUTTON */}
       <div className="navbar-logout">
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout →
+        {/* Login button always visible */}
+        <button className="login-btn" onClick={handleLogin}>
+          Login
         </button>
+
+        {/* Logout button visible only when logged in */}
+        {isLoggedIn && (
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </div>
     </nav>
   );

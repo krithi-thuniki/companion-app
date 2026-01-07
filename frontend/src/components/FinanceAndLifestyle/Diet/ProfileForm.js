@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../../Navbar";
 import "./index.css";
 
 const ProfileForm = ({ setProfile }) => {
@@ -72,7 +71,6 @@ const ProfileForm = ({ setProfile }) => {
 
   return (
     <div>
-      <Navbar />
       <div className="diet-container">
         <h2>👤 Your Profile</h2>
         <div className="diet-form">

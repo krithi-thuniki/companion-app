@@ -1,0 +1,134 @@
+.productivity-hero {
+  min-height: calc(100vh - 70px);
+  padding: 140px 80px 80px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background: linear-gradient(135deg, #f6f2ff, #ffffff);
+}
+
+/* LEFT */
+.hero-left h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4b2fd9;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  font-size: 18px;
+  color: #5a5a75;
+  max-width: 520px;
+  margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #6a5acd, #7b5cff);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(106, 90, 205, 0.3);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #6a5acd;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 2px solid #6a5acd;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* RIGHT */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* IMAGE */
+.hero-image {
+  width: 420px;
+  max-width: 100%;
+  animation: float 4s ease-in-out infinite, fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* FEATURES */
+.features-box {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature {
+  display: flex;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: #f4f0ff;
+  box-shadow: 0 6px 14px rgba(106, 90, 205, 0.15);
+}
+
+.feature span {
+  font-size: 28px;
+}
+
+.feature h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #6a5acd;
+}
+
+.feature p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #5a5a75;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .productivity-hero {
+    grid-template-columns: 1fr;
+    padding: 90px 30px;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 36px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}

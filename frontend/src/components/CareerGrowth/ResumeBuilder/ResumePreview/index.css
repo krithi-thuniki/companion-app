@@ -1,40 +1,45 @@
-/* Container */
+/* Page */
+/* Page */
 .resume-container {
-  padding: 2rem;
-  background: #f5f6fa; /* light background */
+  background: #ffffff;   /* removed grey */
   min-height: 100vh;
-  font-family: 'Charter', Georgia, serif; /* LaTeX-like font */
+  padding: 3rem 1rem;
+  font-family: "Times New Roman", Georgia, serif;
 }
 
-/* Card */
+
+/* Resume Sheet */
 .resume-card {
-  max-width: 750px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 30px;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  transition: all 0.3s ease;
+  padding: 48px 55px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Resume Title */
+/* Name / Title */
 .resume-title {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  color: #2f3640;
-  font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #000;
 }
 
-/* Basic Info */
+/* Contact Info */
+.basic-info {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #000;
+  margin-bottom: 1.6rem;
+}
+
 .basic-info p {
-  margin: 0.3rem 0;
-  font-size: 1rem;
-  color: #555;
+  margin: 0.15rem 0;
 }
 
 .basic-info a {
-  color: #0097e6; /* purple-blue link */
+  color: #000;
   text-decoration: none;
 }
 
@@ -42,86 +47,93 @@
   text-decoration: underline;
 }
 
-/* Sections */
+/* Section Wrapper */
 .resume-section {
-  margin-top: 1.5rem;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
+  margin-top: 1.3rem;
 }
 
-/* Collapsible headings */
+/* Section Heading */
 .collapsible {
   cursor: pointer;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #000;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #2f3640;
-  transition: color 0.2s;
 }
 
-.collapsible:hover {
-  color: #0097e6;
-}
-
-/* Collapsible content */
+/* Content */
 .content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  opacity: 0;
-}
-
-.content.open {
-  max-height: 600px; /* enough for most content */
+  max-height: none;
   opacity: 1;
-}
-
-/* Skills section */
-.skills-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   margin-top: 0.5rem;
-}
-
-.skill-tag {
-  background: #0097e6;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.skill-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 /* Lists */
 ul {
   padding-left: 1.2rem;
-  margin: 0.5rem 0;
+  margin: 0.4rem 0;
 }
 
 li {
-  margin-bottom: 0.4rem;
-  color: #555;
+  margin-bottom: 0.45rem;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  color: #000;
 }
 
-/* Responsive adjustments */
+/* Skills (Text style, not chips) */
+.skills-content {
+  margin-top: 0.4rem;
+}
+
+.skill-tag {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 6px;
+  font-size: 0.96rem;
+  font-weight: 400;
+  color: #000;
+}
+
+.skill-tag::after {
+  content: ",";
+}
+
+.skill-tag:last-child::after {
+  content: "";
+}
+
+/* Links inside content */
+.resume-section a {
+  color: #000;
+  text-decoration: none;
+}
+
+.resume-section a:hover {
+  text-decoration: underline;
+}
+
+/* Remove collapsible animation feel */
+.content,
+.content.open {
+  transition: none;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .resume-card {
-    padding: 20px;
+    padding: 32px 26px;
   }
 
   .resume-title {
-    font-size: 1.5rem;
-  }
-
-  .skills-content {
-    justify-content: flex-start;
+    font-size: 1.8rem;
   }
 }

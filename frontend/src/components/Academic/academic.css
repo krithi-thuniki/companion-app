@@ -1,18 +1,251 @@
+/* Navbar container */
 .sub-navbar {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
   padding: 1rem 2rem;
-  background: white;
-  border-bottom: 1px solid #eee;
+  background-color: #ede9fe; /* Light purple background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+    position: relative; /* or fixed if you want it to always stay visible */
+  top: 0;
 }
 
-.sub-nav-item {
-  color: #000;
-  font-size: 1rem;
-  font-weight: 500;
+/* Container for logo + links aligned to left */
+.sub-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Space between all items */
+}
+
+/* Text Logo styles */
+.sub-nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6d28d9; /* Purple text */
   text-decoration: none;
+  cursor: pointer;
+  margin-right: 18rem; /* Extra space between logo and first link */
+}
+
+/* Navbar links */
+.sub-nav-item {
+  color: #6d28d9;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .sub-nav-item:hover {
-  color: #6d28d9; /* Violet */
+  border-bottom: 3px solid #4c1d95; /* Darker purple underline */
+}
+
+.sub-nav-item.active {
+  border-bottom: 3px solid #a78bfa; /* Light purple underline for active link */
+}
+/* Remove default body margin */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+/* PAGE BACKGROUND */
+/* PAGE BACKGROUND */
+.academic-container {
+  background-color: #fafaff;
+  min-height: 150vh;
+  padding-bottom: 4rem;
+}
+
+/* HERO SECTION */
+.academic-hero {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.academic-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.academic-hero h1 span {
+  color: #6d28d9; /* Primary Violet */
+}
+
+.academic-hero p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6d28d9, #4c1d95);
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(109, 40, 217, 0.25);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #6d28d9;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: 1px solid #e9d5ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* STATS SECTION */
+.academic-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+/* STAT CARD BASE */
+.stat-card {
+  border-radius: 22px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* DARK VIOLET CARD */
+.stat-card.dark {
+  background: linear-gradient(160deg, #4c1d95, #6d28d9);
+  color: white;
+}
+
+/* LIGHT CARD */
+.stat-card.light {
+  background-color: white;
+  color: #1f2937;
+  border: 1px solid #ede9fe;
+}
+
+/* SOFT ACCENT CARD */
+.stat-card.accent {
+  background-color: #ede9fe;
+  color: #4c1d95;
+}
+
+.stat-card h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.stat-card p {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+/* TOOLS SECTION */
+.academic-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.tool-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.8rem;
+  border: 1px solid #ede9fe;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-card h3 {
+  color: #6d28d9;
+  font-weight: 700;
+}
+
+.tool-card p {
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(109, 40, 217, 0.15);
+}
+
+/* TIPS SECTION */
+.academic-tips {
+  max-width: 900px;
+  margin: 4rem auto 0;
+  padding: 2.5rem;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ede9fe, #fafaff);
+}
+
+.academic-tips h2 {
+  color: #4c1d95;
+  font-weight: 800;
+}
+
+.academic-tips ul {
+  margin-top: 1rem;
+  color: #6b7280;
+}
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(60, 30, 120, 0.55);
+  z-index: 999;
+}
+
+.tour-tooltip {
+  position: absolute;
+  background: #ffffff;
+  color: #2b124c;
+  padding: 16px;
+  border-radius: 14px;
+  width: 260px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.tour-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.hidden-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hidden-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-left,
+.reveal-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }

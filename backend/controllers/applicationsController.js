@@ -38,9 +38,17 @@ exports.listApplications = async (req, res) => {
  */
 exports.createApplication = async (req, res) => {
   try {
-    const item = req.body.item || req.body;
+    // ✅ Parse item correctly (FormData-safe)
+    let item = req.body.item || req.body;
+
+    if (typeof item === "string") {
+      item = JSON.parse(item);
+    }
+
+    // ✅ Support both names (safe)
+    const id = item.opportunityId || item.id;
+
     const {
-      id,
       title,
       company,
       type,
@@ -54,6 +62,7 @@ exports.createApplication = async (req, res) => {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
     if (!id) return res.status(400).json({ error: "Opportunity id required" });
+
 
     // ✅ Upsert (insert or update) the related opportunity
     await Opportunity.updateOne(

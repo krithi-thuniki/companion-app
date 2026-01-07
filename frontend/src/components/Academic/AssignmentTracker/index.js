@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { format, parseISO, isBefore, subHours, isToday } from "date-fns";
-import Navbar from "../../Navbar";
 import "./index.css";
+import { Link, NavLink } from "react-router-dom";
 
 // 👇 Import backend API helper
 import { apiFetch } from "../../../services/backendApi";
@@ -258,8 +258,35 @@ const todaysTasks = tasks.filter((t) => {
 
   return (
     <div>
-      <Navbar />
-      <div className="tracker-container">
+<nav className="sub-navbar">
+      <div className="sub-nav-left">
+        <Link to="/" className="sub-nav-logo">MyApp</Link>
+
+        <NavLink
+          id="tour-smart-notes"
+          to="/academic/smart-notes"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Smart Notes</NavLink>
+
+        <NavLink
+          id="tour-deadline"
+          to="/academic/assignment-tracker"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Deadline Tracker</NavLink>
+
+        <NavLink
+          id="tour-peer"
+          to="/academic/peer-learning"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Peer Learning</NavLink>
+
+        <NavLink
+          id="tour-faq"
+          to="/academic/faqs"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >FAQs</NavLink>
+      </div>
+    </nav>      <div className="tracker-container">
         <div className="task-section">
           <h1>📅 Deadline Tracker</h1>
           <p>🔥 Streak: {streak} days</p>

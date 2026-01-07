@@ -1,0 +1,212 @@
+.career-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #eef7ff, #ffffff);
+  text-align: center;
+  padding: 40px 20px 60px;
+}
+/* Text */
+.career-text {
+  max-width: 700px;
+  margin-bottom: 60px;
+  margin-top:70px;
+}
+
+.career-pill {
+display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #ede0ff; /* light purple */
+  color: #7c3aed; /* rich purple */
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.career-text h1 {
+   font-size: 48px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.career-text h1 span {
+  color: #7c3aed; /* rich purple */
+}
+
+.career-text p {
+margin-top: 14px;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* Cards */
+.career-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px; /* space between cards */
+  flex-wrap: wrap; /* wrap on smaller screens */
+  margin-top: 40px;
+  position: relative; /* keep for hover effects if needed */
+}
+.career-card {
+  width: 260px;
+  height: 340px;
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  padding: 32px 28px;
+  cursor: pointer;
+  transition: 
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    filter 0.45s ease,
+    opacity 0.45s ease;
+  line-height: 1.5;
+  position: relative; /* remove absolute */
+}
+
+.career-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.career-card p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Positions */
+/* Positions */
+.career-card.center {
+  transform: translateY(-10px) scale(1.05);
+  z-index: 3;
+}
+
+.career-card.left {
+  transform: translateX(-60px); /* reduced gap */
+  z-index: 2;
+}
+
+.career-card.right {
+  transform: translateX(60px); /* reduced gap */
+  z-index: 2;
+}
+
+/* Hover effect */
+.career-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+  opacity: 1 !important;
+  filter: blur(0) !important;
+  z-index: 10;
+}
+.card-tag {
+  font-size: 12px;
+  color: #7c3aed;
+  background: #f3e8ff;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.card-body p {
+  margin: 16px 0;
+  font-size: 15px;
+  color: #4b5563;
+}
+
+.card-body ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card-body li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #374151;
+}
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Badge */
+.card-badge {
+ display: inline-block;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #ede0ff; /* light purple */
+  color: #7c3aed; /* rich purple */
+  margin-bottom: 18px;
+}
+
+/* Description (single line only) */
+.card-desc {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 22px;
+}
+
+/* Bullet list */
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-list li {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+/* Allow layering */
+.career-cards {
+  position: relative;
+}
+
+/* Default state */
+.career-card {
+  transition: 
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    filter 0.45s ease,
+    opacity 0.45s ease;
+}
+
+/* When ANY card is hovered, dim all cards */
+.career-cards:hover .career-card {
+  opacity: 0.4;
+  filter: blur(2px);
+  transform: scale(0.95);
+}
+
+/* Bring hovered card to focus */
+.career-card:hover {
+  opacity: 1 !important;
+  filter: blur(0) !important;
+  transform: translateY(-20px) scale(1.08) !important;
+  box-shadow: 0 40px 80px rgba(124, 58, 237, 0.3); /* purple shadow */
+  z-index: 10;
+}
+
+.career-card.left:hover,
+.career-card.right:hover {
+  transform: translateY(-20px) scale(1.08) !important;
+}
+.career-hero::after {
+  content: "";
+position: relative;  
+ inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.career-cards:hover ~ .career-hero::after {
+  opacity: 1;
+}

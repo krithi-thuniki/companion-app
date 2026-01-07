@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../../../Navbar";
 import "./index.css";
 
 // 🔥 Calculate TDEE using Mifflin-St Jeor equation
@@ -88,7 +87,6 @@ const WeeklyReports = ({ profile }) => {
 
   return (
     <div>
-      <Navbar />
       <div className="diet-container">
         <h2>📅 Weekly Report</h2>
 

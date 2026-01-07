@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../Navbar";
 import "./index.css";
 
 const Diet = () => {
   return (
     <div>
-      <Navbar />
       <div className="diet-container">
         <h1 className="diet-title">🍎 Healthy Eating & Diet Tracker</h1>
         <p className="diet-subtitle">

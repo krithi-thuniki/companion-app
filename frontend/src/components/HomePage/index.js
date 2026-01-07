@@ -103,6 +103,16 @@ const funFacts = [
   "Owls can’t move their eyes.",
   "A cloud can weigh more than a million pounds.",
 ];
+const closeBtnStyle = {
+  marginTop: "25px",
+  padding: "10px 20px",
+  borderRadius: "10px",
+  border: "none",
+  background: "#9b5de5",
+  color: "#fff",
+  fontSize: "15px",
+  cursor: "pointer",
+};
 
 const HomePage = () => {
   const [streak, setStreak] = useState(0);
@@ -154,6 +164,8 @@ const HomePage = () => {
         transition: "opacity 0.8s ease-in-out",
         background: "linear-gradient(135deg, #f8f5ff, #ffffff)",
         minHeight: "100vh",
+              paddingTop: "80px", // ✅ Navbar height offset
+
       }}
     >
       <Navbar />
@@ -211,35 +223,62 @@ const HomePage = () => {
       <ValuesSection />
 
       {/* Tools Modal */}
-      {showToolsModal && (
-        <Modal onClose={() => setShowToolsModal(false)} title="Explore Tools">
-          <ul>
-            {toolsList.map((tool, i) => (
-              <li key={i} style={{ marginBottom: "8px" }}>
-                {tool} {i === toolsList.length - 1 && <span>🔥 New tool added today!</span>}
-              </li>
-            ))}
-          </ul>
-        </Modal>
-      )}
+     {/* Tools Modal */}
+{showToolsModal && (
+  <Modal onClose={() => setShowToolsModal(false)} title="Explore Tools">
+    <ul>
+      {toolsList.map((tool, i) => (
+        <li key={i} style={{ marginBottom: "8px" }}>
+          {tool}{" "}
+          {i === toolsList.length - 1 && (
+            <span>🔥 New tool added today!</span>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    {/* ✅ Close Button */}
+    <button
+      style={closeBtnStyle}
+      onClick={() => setShowToolsModal(false)}
+    >
+      Close
+    </button>
+  </Modal>
+)}
+
 
       {/* Insights Modal */}
-      {showInsightsModal && (
-        <Modal onClose={() => setShowInsightsModal(false)} title="Your Insights">
-          <p>📈 Current Streak: {streak}-day</p>
-          <p>🎯 Today's Challenge: {challenges[todayIndex]}</p>
-          <p>💡 Tip: {tips[todayIndex]}</p>
-          <p>
-            Filter:{" "}
-            <select>
-              <option>Last 7 days</option>
-              <option>Last month</option>
-              <option>All time</option>
-            </select>
-          </p>
-          {streak % 7 === 0 && <p>🎉 Milestone reached! Congrats!</p>}
-        </Modal>
-      )}
+     {/* Insights Modal */}
+{showInsightsModal && (
+  <Modal onClose={() => setShowInsightsModal(false)} title="Your Insights">
+    <p>📈 Current Streak: {streak}-day</p>
+    <p>🎯 Today's Challenge: {challenges[todayIndex]}</p>
+    <p>💡 Tip: {tips[todayIndex]}</p>
+
+    <p>
+      Filter:{" "}
+      <select>
+        <option>Last 7 days</option>
+        <option>Last month</option>
+        <option>All time</option>
+      </select>
+    </p>
+
+    {streak % 7 === 0 && (
+      <p>🎉 Milestone reached! Congrats!</p>
+    )}
+
+    {/* ✅ Close Button */}
+    <button
+      style={closeBtnStyle}
+      onClick={() => setShowInsightsModal(false)}
+    >
+      Close
+    </button>
+  </Modal>
+)}
+
 
       <Footer />
     </div>
@@ -283,7 +322,7 @@ const HeroSection = ({ streak, onExplore, onInsights }) => (
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: "60px 80px",
+      padding: "0 80px 60px", // ✅ top padding removed
       flexWrap: "wrap",
     }}
   >

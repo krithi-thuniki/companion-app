@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import Navbar from "../../../Navbar";
 
 const Suggestions = ({
   nutrition = { protein: 0, carbs: 0, fats: 0 },
@@ -48,7 +47,6 @@ const Suggestions = ({
 
   return (
     <>
-      <Navbar />
       <div className="diet-container">
         <h2>💡 Personalized Healthy Suggestions</h2>
         <ul className="diet-list">

@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../Navbar";
 import axios from "axios";
 import "./index.css";
-
+import { NavLink } from "react-router-dom";
 // Dynamic API base URL
 const API = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
@@ -99,8 +98,38 @@ const PeerLearning = () => {
 
   return (
     <div>
-      <Navbar />
-      <div className="peerlearning-container">
+ <div>
+    {/* 🔹 Replace Navbar with inline academic sub-navbar */}
+    <nav className="sub-navbar">
+      <div className="sub-nav-left">
+        <Link to="/" className="sub-nav-logo">MyApp</Link>
+
+        <NavLink
+          id="tour-smart-notes"
+          to="/academic/smart-notes"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Smart Notes</NavLink>
+
+        <NavLink
+          id="tour-deadline"
+          to="/academic/assignment-tracker"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Deadline Tracker</NavLink>
+
+        <NavLink
+          id="tour-peer"
+          to="/academic/peer-learning"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Peer Learning</NavLink>
+
+        <NavLink
+          id="tour-faq"
+          to="/academic/faqs"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >FAQs</NavLink>
+      </div>
+    </nav>
+    </div>      <div className="peerlearning-container">
         {/* LEFT SIDE */}
         <div className="left-panel">
           <h1>🤝 Peer Learning</h1>

@@ -4,6 +4,7 @@ import "./index.css";
 
 const ResumePreview = () => {
   // Load resume data from localStorage
+  
   const resumeData = JSON.parse(localStorage.getItem("resumeData")) || {};
 
   // Section toggle state

@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
-import Navbar from "../../../Navbar";
 import "./index.css";
 
 const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
@@ -19,7 +18,6 @@ const Analysis = ({ nutrition = { protein: 0, carbs: 0, fats: 0 } }) => {
 
   return (
     <div>
-      <Navbar />
       <div className="diet-container">
         <h2>📊 Nutrition Analysis</h2>
 

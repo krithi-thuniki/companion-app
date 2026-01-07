@@ -1,17 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaListUl, FaStar, FaChartLine, FaMedal } from "react-icons/fa";
+import { FaListUl, FaStar, FaChartLine, FaMedal } from "react-icons/fa";
 import Navbar from "../../Navbar";
 import "./index.css";
 
 const InternshipFinder = () => {
   const features = [
-    {
-      icon: <FaSearch />,
-      title: "Search",
-      desc: "Find internships by role, skills, or location.",
-      path: "/career/internships/search",
-    },
     {
       icon: <FaListUl />,
       title: "Internship List",

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../../../Navbar";
 import { io } from "socket.io-client";
 import axios from "axios";
 import "./index.css";
+import { NavLink, Link } from "react-router-dom";
+
 
 const API = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
@@ -92,8 +93,37 @@ const ChatPage = () => {
   if (!group) {
     return (
       <>
-        <Navbar />
-        <div className="chatpage-container">Loading chat...</div>
+ <div>
+    {/* 🔹 Replace Navbar with inline academic sub-navbar */}
+    <nav className="sub-navbar">
+      <div className="sub-nav-left">
+        <Link to="/" className="sub-nav-logo">MyApp</Link>
+
+        <NavLink
+          id="tour-smart-notes"
+          to="/academic/smart-notes"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Smart Notes</NavLink>
+
+        <NavLink
+          id="tour-deadline"
+          to="/academic/assignment-tracker"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Deadline Tracker</NavLink>
+
+        <NavLink
+          id="tour-peer"
+          to="/academic/peer-learning"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Peer Learning</NavLink>
+
+        <NavLink
+          id="tour-faq"
+          to="/academic/faqs"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >FAQs</NavLink>
+      </div>
+    </nav></div>        <div className="chatpage-container">Loading chat...</div>
       </>
     );
   }
@@ -102,8 +132,37 @@ const ChatPage = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="chatpage-container">
+ <div>
+    {/* 🔹 Replace Navbar with inline academic sub-navbar */}
+    <nav className="sub-navbar">
+      <div className="sub-nav-left">
+        <Link to="/" className="sub-nav-logo">MyApp</Link>
+
+        <NavLink
+          id="tour-smart-notes"
+          to="/academic/smart-notes"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Smart Notes</NavLink>
+
+        <NavLink
+          id="tour-deadline"
+          to="/academic/assignment-tracker"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Deadline Tracker</NavLink>
+
+        <NavLink
+          id="tour-peer"
+          to="/academic/peer-learning"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >Peer Learning</NavLink>
+
+        <NavLink
+          id="tour-faq"
+          to="/academic/faqs"
+          className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+        >FAQs</NavLink>
+      </div>
+    </nav></div>      <div className="chatpage-container">
         {/* Sidebar */}
         <div className="chat-sidebar">
           <h2>{group.name}</h2>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../../../Navbar";
 import "./index.css";
 
 const LogMeals = ({ setNutrition, setWeeklyMeals, setWaterIntake, setActivityLevel, waterIntake, activityLevel }) => {
@@ -142,7 +141,6 @@ const LogMeals = ({ setNutrition, setWeeklyMeals, setWaterIntake, setActivityLev
 
   return (
     <div>
-      <Navbar />
       <div className="diet-container">
         <h2>🥗 Log Meals</h2>
 
