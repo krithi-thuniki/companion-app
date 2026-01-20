@@ -9,7 +9,7 @@ const InternshipDetails = () => {
   const { internshipId } = useParams();
   const location = useLocation();
   const [job, setJob] = useState(location.state?.job || null);
-  const [status, setStatus] = useState("Not Applied");
+  const  [setStatus] = useState("Not Applied");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
